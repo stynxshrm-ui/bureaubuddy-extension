@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BureauBuddy</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 300px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 13px;
+      color: #111;
+      background: #fff;
+    }
+
+    .header {
+      padding: 14px 16px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      width: 28px; height: 28px;
+      background: #3C3489;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 11px; font-weight: 700;
+    }
+
+    .brand { font-size: 14px; font-weight: 600; }
+    .tagline { font-size: 11px; color: #888; }
+
+    .status-bar {
+      padding: 10px 16px;
+      background: #f8f8fc;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #ccc;
+    }
+    .status-dot.active { background: #1D9E75; }
+    .status-text { font-size: 12px; color: #555; }
+
+    .usage-bar-wrap {
+      padding: 12px 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .usage-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .usage-bar-bg {
+      height: 4px;
+      background: #eee;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .usage-bar-fill {
+      height: 100%;
+      background: #3C3489;
+      border-radius: 2px;
+      transition: width 0.3s;
+    }
+
+    .upgrade-note {
+      font-size: 11px;
+      color: #888;
+      margin-top: 6px;
+    }
+
+    .upgrade-note a {
+      color: #3C3489;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .settings-section {
+      padding: 12px 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .settings-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .api-key-row {
+      display: flex;
+      gap: 6px;
+    }
+
+    .api-key-input {
+      flex: 1;
+      padding: 7px 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: monospace;
+      outline: none;
+      color: #333;
+    }
+
+    .api-key-input:focus { border-color: #3C3489; }
+
+    .save-btn {
+      padding: 7px 12px;
+      background: #3C3489;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .save-btn:hover { background: #534AB7; }
+
+    .api-hint {
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    .api-hint a { color: #3C3489; text-decoration: none; }
+
+    .supported-section {
+      padding: 12px 16px;
+    }
+
+    .supported-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .supported-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #444;
+    }
+
+    .supported-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #1D9E75;
+      flex-shrink: 0;
+    }
+
+    .supported-dot.coming { background: #EF9F27; }
+
+    .save-feedback {
+      font-size: 11px;
+      color: #1D9E75;
+      margin-top: 4px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">BB</div>
+    <div>
+      <div class="brand">BureauBuddy</div>
+      <div class="tagline">AI subtitles for Swedish bureaucracy</div>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <div class="status-dot" id="status-dot"></div>
+    <div class="status-text" id="status-text">Checking…</div>
+  </div>
+
+  <div class="usage-bar-wrap">
+    <div class="usage-label">
+      <span>Free tier usage</span>
+      <span id="usage-count">0 / 5 this month</span>
+    </div>
+    <div class="usage-bar-bg">
+      <div class="usage-bar-fill" id="usage-bar" style="width: 0%"></div>
+    </div>
+    <div class="upgrade-note">
+      Need more? <a href="https://bureaubuddy.se/upgrade" target="_blank">Upgrade to Resident →</a>
+    </div>
+  </div>
+
+  <div class="settings-section">
+    <div class="settings-label">Device ID</div>
+    <p class="api-hint">
+      <code id="device-id" style="font-family: monospace; color: #333; background: #f0f0f0; padding: 3px 6px; border-radius: 3px; display: inline-block; word-break: break-all;">Loading…</code>
+    </p>
+    <p class="api-hint" style="margin-top: 10px;">
+      Your unique device ID allows us to track your free tier usage securely—no login required.
+    </p>
+  </div>
+
+  <div class="supported-section">
+    <div class="settings-label">Supported sites</div>
+    <div class="supported-list">
+      <div class="supported-item">
+        <div class="supported-dot"></div> Gmail PDF attachments
+      </div>
+      <div class="supported-item">
+        <div class="supported-dot"></div> Kivra
+      </div>
+      <div class="supported-item">
+        <div class="supported-dot"></div> Minmyndighetspost
+      </div>
+      <div class="supported-item">
+        <div class="supported-dot coming"></div> 1177 (coming soon)
+      </div>
+      <div class="supported-item">
+        <div class="supported-dot coming"></div> Skatteverket e-tjänster (coming soon)
+      </div>
+    </div>
+  </div>
+
+  <script src="src/popup.js"></script>
+</body>
+</html>

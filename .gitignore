@@ -1,0 +1,11 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Python (generate_icons.py)
+__pycache__/
+*.pyc
+
+# Packaged builds
+*.crx
+*.zip

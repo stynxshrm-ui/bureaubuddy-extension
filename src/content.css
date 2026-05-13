@@ -1,0 +1,453 @@
+/* BureauBuddy – injected styles */
+
+/* ── Floating button ─────────────────────────────────────────────────────── */
+#bb-floating-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2147483640;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: #3C3489;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(60, 52, 137, 0.35);
+  transition: transform 0.15s ease, background 0.15s ease;
+  user-select: none;
+}
+
+#bb-floating-btn:hover {
+  background: #534AB7;
+  transform: translateY(-1px);
+}
+
+#bb-floating-btn:active {
+  transform: scale(0.97);
+}
+
+#bb-floating-btn.bb-loading {
+  opacity: 0.85;
+  cursor: wait;
+}
+
+.bb-flag {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.bb-btn-text {
+  letter-spacing: 0.01em;
+}
+
+/* ── Spinner ─────────────────────────────────────────────────────────────── */
+.bb-spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: bb-spin 0.7s linear infinite;
+}
+
+@keyframes bb-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Side panel ──────────────────────────────────────────────────────────── */
+#bb-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 320px;
+  z-index: 2147483641;
+  background: #fff;
+  border-left: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #111;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  overflow: hidden;
+}
+
+#bb-panel.bb-panel-visible {
+  transform: translateX(0);
+}
+
+#bb-panel.bb-panel-closing {
+  transform: translateX(100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  #bb-panel {
+    background: #1a1a2e;
+    color: #e8e8f0;
+    border-left-color: #2e2e4a;
+  }
+}
+
+/* ── Panel header ────────────────────────────────────────────────────────── */
+.bb-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bb-panel-header { border-bottom-color: #2e2e4a; }
+}
+
+.bb-panel-logo {
+  width: 24px;
+  height: 24px;
+  background: #3C3489;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.bb-panel-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  flex: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bb-panel-title { color: #e8e8f0; }
+}
+
+.bb-panel-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #888;
+  padding: 2px 6px;
+  border-radius: 4px;
+  line-height: 1;
+  transition: background 0.1s;
+}
+
+.bb-panel-close:hover { background: #f0f0f0; }
+
+/* ── Panel body ──────────────────────────────────────────────────────────── */
+.bb-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bb-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.bb-sender {
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bb-sender { color: #c8c8e0; }
+}
+
+.bb-doc-type {
+  font-size: 11px;
+  color: #888;
+  background: #f5f5f5;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bb-doc-type { background: #2a2a40; color: #9090b0; }
+}
+
+.bb-urgency {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: auto;
+}
+
+/* ── Sections ────────────────────────────────────────────────────────────── */
+.bb-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bb-section-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.bb-summary {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #222;
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bb-summary { color: #ddddf0; }
+}
+
+.bb-muted {
+  font-size: 12px;
+  color: #aaa;
+  margin: 0;
+}
+
+/* ── Action list ─────────────────────────────────────────────────────────── */
+.bb-action-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bb-action-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 8px 10px;
+  background: #fffbf0;
+  border: 1px solid #fac775;
+  border-radius: 8px;
+  color: #633806;
+}
+
+.bb-action-list li::before {
+  content: "→";
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bb-action-list li {
+    background: #2a200a;
+    border-color: #5a3800;
+    color: #fac775;
+  }
+}
+
+/* ── Fact list ───────────────────────────────────────────────────────────── */
+.bb-fact-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bb-fact-list li {
+  font-size: 12px;
+  padding: 5px 0;
+  border-bottom: 1px solid #f0f0f0;
+  color: #444;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bb-fact-list li { border-bottom-color: #2a2a40; color: #b0b0c8; }
+}
+
+/* ── Deadlines ───────────────────────────────────────────────────────────── */
+.bb-deadline-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #fafafa;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bb-deadline-item { background: #1e1e32; border-color: #2e2e4a; }
+}
+
+.bb-deadline-date {
+  font-size: 11px;
+  font-weight: 600;
+  color: #A32D2D;
+  min-width: 70px;
+  flex-shrink: 0;
+}
+
+.bb-deadline-desc {
+  font-size: 11px;
+  color: #555;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bb-deadline-desc { color: #9090b0; }
+}
+
+/* ── Appeal box ──────────────────────────────────────────────────────────── */
+.bb-appeal {
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 10px;
+  background: #f0f4ff;
+  border: 1px solid #b5d4f4;
+  border-radius: 8px;
+  color: #0C447C;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bb-appeal { background: #0a1a2e; border-color: #1a3a5a; color: #85b7eb; }
+}
+
+/* ── Divider ─────────────────────────────────────────────────────────────── */
+.bb-divider {
+  height: 1px;
+  background: #e5e7eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bb-divider { background: #2e2e4a; }
+}
+
+/* ── Chat ────────────────────────────────────────────────────────────────── */
+.bb-chat-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bb-chat-history {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.bb-chat-user {
+  align-self: flex-end;
+  background: #3C3489;
+  color: #fff;
+  padding: 7px 11px;
+  border-radius: 12px 12px 2px 12px;
+  font-size: 12px;
+  max-width: 85%;
+}
+
+.bb-chat-ai {
+  align-self: flex-start;
+  background: #f5f5f8;
+  color: #222;
+  padding: 7px 11px;
+  border-radius: 12px 12px 12px 2px;
+  font-size: 12px;
+  max-width: 85%;
+  border: 1px solid #e5e7eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bb-chat-ai { background: #1e1e32; color: #ddddf0; border-color: #2e2e4a; }
+}
+
+.bb-chat-input-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.bb-chat-input {
+  flex: 1;
+  padding: 7px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  font-size: 12px;
+  font-family: inherit;
+  outline: none;
+  background: #fafafa;
+  color: #111;
+  transition: border-color 0.15s;
+}
+
+.bb-chat-input:focus { border-color: #3C3489; }
+
+@media (prefers-color-scheme: dark) {
+  .bb-chat-input { background: #1a1a2e; border-color: #2e2e4a; color: #e0e0f0; }
+}
+
+.bb-chat-send {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #3C3489;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.bb-chat-send:hover { background: #534AB7; }
+
+/* ── Error box ───────────────────────────────────────────────────────────── */
+.bb-error-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 16px;
+  text-align: center;
+  color: #666;
+}
+
+.bb-error-icon {
+  font-size: 28px;
+  color: #E24B4A;
+}
+
+.bb-error-box a {
+  color: #3C3489;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}

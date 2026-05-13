@@ -1,0 +1,32 @@
+# Backend / Vercel
+api/
+backend/
+vercel.json
+package.json
+package-lock.json
+node_modules/
+
+# Environment & config
+.env
+.env.local
+.env*.local
+.env.example
+.vercel/
+.gitignore
+.crxignore
+
+# Scripts & tooling
+generate_icons.py
+__pycache__/
+*.pyc
+
+# Docs
+*.md
+QUICK_START.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
