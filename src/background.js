@@ -3,7 +3,7 @@
 
 // Switch to production URL when deploying:
 // const BACKEND_API_URL = "https://api.bureaubuddy.se/api/analyze";
-const BACKEND_API_URL = "https://bureaubuddy-backend-gqij72d29-satyan-sharma-s-projects.vercel.app/api/analyze";
+const BACKEND_API_URL = "https://bureaubuddy-backend.vercel.app/api/analyze";
 //const BACKEND_API_URL = "http://localhost:3000/api/analyze";
 
 // ── Initialize device ID on install/update ────────────────────────────────────
